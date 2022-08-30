@@ -4,8 +4,8 @@
     border-radius: 10px;
     background:rgb(124, 158, 124);
     position: fixed;
-    left: 50%;
-    top: 40%;
+    left: 40%;
+    top: 0;
     z-index: 10000;
     display: flex;
     justify-content: center;

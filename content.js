@@ -6,12 +6,13 @@ const contenteditableElements = document.querySelectorAll('[contenteditable=true
 const dictionary = {
     'Cat': ['Dog', 'Rat', 'bat'],
     'Helo': ['hello', 'Help', 'Hell'],
-    'heldp': ['help', 'held', 'hello']
+    'heldp': ['help', 'held', 'hello'],
+    'woood': ['wood','forest', 'wohoo']
 };
 let keywords = Object.keys(dictionary);
 
 
-const OpenpopupReplacementWord = (word,textArea) => {
+const openPopupReplacementWord = (word,textArea) => {
     const popup = document.createElement('div');
         chrome.storage.sync.get('color', (data) =>{
         popup.classList.add('pops');
@@ -31,8 +32,8 @@ const OpenpopupReplacementWord = (word,textArea) => {
     return document.body.append(popup);
     };
 
-const ContenteditableReplacement  = (word,textArea,index) => {
-    OpenpopupReplacementWord(word,textArea);
+const contenteditableReplacement  = (word,textArea,index) => {
+    openPopupReplacementWord(word,textArea);
     const btns = document.querySelectorAll('[data-wordBtn]');
         btns.forEach(btnWord => {
         btnWord.addEventListener('click', (e) => {
@@ -48,7 +49,7 @@ const ContenteditableReplacement  = (word,textArea,index) => {
 
 const changeWord  = (word,res,input) => {
     if (keywords.includes(word[word.length -1])) {
-        OpenpopupReplacementWord(word[word.length -1],input);
+        openPopupReplacementWord(word[word.length -1],input);
         const btns = document.querySelectorAll('[data-wordBtn]');
         btns.forEach(btnWord => {
             btnWord.addEventListener('click', (e) => {
@@ -97,14 +98,14 @@ const findPositionOfWord = (item) => {
         }
        
         if (keywords.includes(word)) {
-            ContenteditableReplacement(word,item,wordNumber);
+            contenteditableReplacement(word,item,wordNumber);
         } 
     
 };
 
 const changeWordExistenText = (elem) => {
     elem.forEach(item => {      
-        item.addEventListener('click', (e)=> {
+        item.addEventListener('click', ()=> {
             findPositionOfWord(item);           
         });
 
@@ -128,13 +129,13 @@ input.addEventListener('keydown', (e) => {
     if (e.keyCode == 32) {
             let word = res.split(' ');
             changeWord(word, res,input);
-        }
-    
-    });
-    
+        } 
+    });  
 });
 changeWordExistenText(contenteditableElements);
 };
+
+
 run();
 
 
