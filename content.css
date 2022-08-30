@@ -1,0 +1,35 @@
+.pops {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    background:rgb(124, 158, 124);
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+.hide {
+    display: none;
+}
+
+
+
+.word_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    cursor: pointer;
+    display: flex;
+    width: 60px;
+    height: 30px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background:rgb(152, 226, 241);
+
+}
